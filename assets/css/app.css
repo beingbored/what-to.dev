@@ -1,3 +1,6 @@
+/* Noto Seri KR */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap');
+
 /** assets/css/app.css */
 
 /**
@@ -64,6 +67,19 @@
   */
 
 
+body {
+  @apply font-serif;
+}
+
 .app-nav-link {
     @apply cursor-pointer p-6 mb-4 text-xl text-gray-500 font-bold bg-white uppercase border-l-8 border-white;
+}
+
+/* Design System */
+.system-demo-container {
+  @apply mt-4 mb-8;
+}
+
+.sample-title {
+  @apply font-bold text-xl uppercase font-mono mb-4;
 }
