@@ -10,7 +10,7 @@
 </head>
 
 <body class="flex flex-row antialiased w-full h-full">
-  <aside class="flex-none w-1/5 py-8 border-r">
+  <aside class="flex-none w-1/5 py-8 border-r hidden lg:block">
     <header class="mb-8 text-center text-indigo-500">
       <%= link "LIFELOG", to: Routes.page_path(@conn, :index), class: "text-4xl font-bold" %>
     </header>
