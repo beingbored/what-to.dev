@@ -1,1 +1,17 @@
-<h1 class="text-4xl">Hello World</h1>
+<div class="system-demo-container container">
+    <label class="sample-title">Article Title</label>
+    <h1 class="text-4xl font-serif mb-4">테스트 아티클 제목입니다.</h1>
+</div>
+
+<div class="system-demo-container container">
+    <label class="sample-title">Article Description</label>
+    <p class="font-serif text-xl">
+        한눈에 또렷하게 읽히도록 디자인하였습니다. 글자의 속 공간을 넉넉하게 늘리고, 꼭 필요한 장식을 제외한 선은 모두 직선으로 다듬어 한눈에도 바르고 또렷하게 보입니다. 리디바탕은 e-ink 기기와
+        모바일에서 최상의 독서 환경을 제공합니다.
+    </p>
+</div>
+
+<div class="system-demo-container container">
+    <label class="sample-title">Article Read More button</label>
+    <a class="font-serif text-lg block uppercase hover:underline text-blue-500 hover:text-blue-400" href="#">더보기</a>
+</div>
