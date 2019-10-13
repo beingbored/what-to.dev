@@ -1,1 +1,3 @@
 <h1>Hello World</h1>
+
+<%= render LifelogWeb.SharedView, "article_item.html", assigns %>

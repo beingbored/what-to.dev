@@ -59,7 +59,6 @@ defmodule LifelogWeb do
       import LifelogWeb.Gettext
     end
   end
-
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
