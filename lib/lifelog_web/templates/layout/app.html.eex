@@ -22,7 +22,7 @@
             <a href="https://hexdocs.pm/phoenix/overview.html">
               <img class="inline-block align-text-bottom"
                 src='<%= Routes.static_path(@conn, "/images/icons/home.svg") %>' alt="Home" />
-              Home
+              <%= link "Home", to: Routes.page_path(@conn, :index), class: "text-black" %>
             </a>
           </li>
           <!-- TODO: li 태그를 클릭하면 라우트가 변경될 수 있도록 한다. -->
@@ -49,7 +49,7 @@
     </section>
   </aside>
   <main role="main" class="flex-1">
-    <div class="container">
+    <div class="container py-10">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>

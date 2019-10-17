@@ -1,0 +1,41 @@
+<div>
+    <%= form_for @conn, Routes.blog_path(@conn, :create), fn f -> %>
+        <div class="mb-8">
+            <label
+                for="title"
+                class="font-bold text-xl block mb-2"
+            >
+                Title
+            </label>
+            <%=
+                text_input f,
+                :title,
+                class: "font-mono text-xl border-b border-black outline-none w-full py-4 px-2 border-blue-500 focus:border-black",
+                required: true,
+                minlength: 5
+            %>
+        </div>
+
+        <div class="mb-8">
+            <label for="body" class="font-bold text-xl block">Body</label>
+            <%=
+                textarea f,
+                :body,
+                class: "font-mono text-xl border-b border-black outline-none w-full py-4 px-2 border-blue-500 focus:border-black resize-none",
+                rows: 10,
+                required: true
+            %>
+            <div class="text-right font-mono text-sm">Word: 00, Char: 00, Length: 1min</div>
+        </div>
+        <div>
+            <%= submit class: "text-xl border border-black px-4 py-2 rounded focus:shadow outline-none" do %>
+                <img
+                    class="inline-block align-text-bottom"
+                    src='<%= Routes.static_path(@conn, "/images/icons/save.svg") %>'
+                    alt="Save"
+                />&nbsp;
+                <span>Save</span>
+            <% end %>
+        </div>
+    <% end %>
+</div>

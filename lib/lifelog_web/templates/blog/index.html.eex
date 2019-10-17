@@ -1,3 +1,24 @@
-<h1>Hello World</h1>
+<div class="py-4 mb-4">
+    <h1 class="text-xl">Lastest Articles</h1>
+</div>
 
-<%= render LifelogWeb.SharedView, "article_item.html", assigns %>
+<!-- for로 감싸야함 -->
+<div class="flex block mb-4 flex-col items-center xl:flex-row xl:items-start border rounded xl:border-none">
+    <div class="xl:mr-4 xl:mb-4">
+        <img src="https://images.unsplash.com/photo-1551552897-4270bd3b714c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
+            alt="" class="w-full">
+    </div>
+    <div class="p-2 xl:p-0">
+        <h1 class="text-3xl font-serif mb-4">Hello World</h1>
+        <p class="font-serif text-xl break-normal text-justify mb-4">
+            한눈에 또렷하게 읽히도록 디자인하였습니다. 글자의 속 공간을 넉넉하게 늘리고, 꼭 필요한 장식을 제외한 선은 모두 직선으로 다듬어 한눈에도 바르고 또렷하게 보입니다. 리디바탕은 e-ink
+            기기와
+            모바일에서 최상의 독서 환경을 제공합니다.
+        </p>
+        <%=
+            link "더보기",
+            to: Routes.blog_path(@conn, :show, 20),
+            class: "font-serif text-lg uppercase hover:underline text-gray-500 hover:text-blue-400"
+        %>
+    </div>
+</div>

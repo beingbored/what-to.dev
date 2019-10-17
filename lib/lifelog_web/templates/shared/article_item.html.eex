@@ -4,7 +4,7 @@
             alt="" class="w-full">
     </div>
     <div class="p-2 xl:p-0">
-        <h1 class="text-3xl font-serif mb-4">테스트 아티클 제목입니다.</h1>
+        <h1 class="text-3xl font-serif mb-4">Hello World</h1>
         <p class="font-serif text-xl break-normal text-justify mb-4">
             한눈에 또렷하게 읽히도록 디자인하였습니다. 글자의 속 공간을 넉넉하게 늘리고, 꼭 필요한 장식을 제외한 선은 모두 직선으로 다듬어 한눈에도 바르고 또렷하게 보입니다. 리디바탕은 e-ink
             기기와

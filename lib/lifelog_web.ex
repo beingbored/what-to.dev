@@ -42,7 +42,11 @@ defmodule LifelogWeb do
       import LifelogWeb.ErrorHelpers
       import LifelogWeb.Gettext
       alias LifelogWeb.Router.Helpers, as: Routes
+      def render_shared(template, assigns \\ []) do
+        render(LifelogWeb.SharedView, template, assigns)
+      end
     end
+
   end
 
   def router do
