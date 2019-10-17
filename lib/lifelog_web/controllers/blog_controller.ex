@@ -1,8 +1,11 @@
 defmodule LifelogWeb.BlogController do
   use LifelogWeb, :controller
+  alias Lifelog.Repo
+  alias Lifelog.Posts
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    posts = Posts.list_posts()
+    render(conn, "index.html", posts: posts)
   end
 
   def show(conn, _params) do
