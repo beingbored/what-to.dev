@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="w-full h-full">
+<html lang="en" class="w-full h-full overflow-hidden">
 
 <head>
   <meta charset="utf-8" />
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
 </head>
 
-<body class="flex flex-row antialiased w-full h-full">
+<body class="flex flex-row antialiased w-full h-full overflow-hidden">
   <aside class="flex-none w-1/5 py-8 border-r hidden lg:block">
     <header class="mb-8 text-center text-indigo-500">
       <%= link "LIFELOG", to: Routes.page_path(@conn, :index), class: "text-4xl font-bold" %>
@@ -48,7 +48,7 @@
       </nav>
     </section>
   </aside>
-  <main role="main" class="flex-1">
+  <main role="main" class="flex-1 w-full h-full overflow-y-auto">
     <div class="container py-10">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
