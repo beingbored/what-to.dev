@@ -17,21 +17,23 @@
     <section class="container p-0">
       <nav role="navigation">
         <ul>
+          <%= link to: Routes.page_path(@conn, :index), class: "text-black" do %>
           <li
             class="flex cursor-pointer p-6 mb-4 text-xl text-black font-bold bg-white uppercase border-l-8 border-white hover:border-gray-500 hover:bg-gray-100 hover:text-gray-700">
-            <a href="https://hexdocs.pm/phoenix/overview.html">
-              <img class="inline-block align-text-bottom"
-                src='<%= Routes.static_path(@conn, "/images/icons/home.svg") %>' alt="Home" />
-              <%= link "Home", to: Routes.page_path(@conn, :index), class: "text-black" %>
-            </a>
+            <img class="inline-block align-text-bottom"
+              src='<%= Routes.static_path(@conn, "/images/icons/home.svg") %>' alt="Home" />
+            <span class="text-black">Home</span>
           </li>
+          <% end %>
           <!-- TODO: li 태그를 클릭하면 라우트가 변경될 수 있도록 한다. -->
           <!-- TODO: Routes 기반 active 클래스가 가능하도록 한다. -->
+          <%= link to: Routes.blog_path(@conn, :index), class: "text-black" do %>
           <li class="app-nav-link hover:border-gray-500 text-black hover:bg-gray-100 hover:text-gray-700">
             <img class="inline-block align-text-bottom"
               src='<%= Routes.static_path(@conn, "/images/icons/coffee.svg") %>' alt="Blog" />
-            <%= link "Blog", to: Routes.blog_path(@conn, :index), class: "text-black" %>
+              <span class="text-black">Blog</span>
           </li>
+          <% end %>
           <li
             class="cursor-pointer p-6 mb-4 text-xl text-black font-bold bg-white uppercase border-l-8 border-white hover:border-gray-500 hover:bg-gray-100 hover:text-gray-700">
             <img class="inline-block align-text-bottom"
