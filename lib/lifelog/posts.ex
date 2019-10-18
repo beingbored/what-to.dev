@@ -21,4 +21,18 @@ defmodule Lifelog.Posts do
     def list_posts do
       Repo.all(Post)
     end
+
+    def create_post(attrs \\ %{}) do
+      IO.puts("post_prams ->")
+      IO.inspect(attrs)
+      IO.puts("<- post_prams")
+
+      %Post{}
+      |> Post.changeset(attrs)
+      |> Repo.insert()
+    end
+
+    def change_post(%Post{} = post) do
+      Post.changeset(post, %{})
+    end
   end

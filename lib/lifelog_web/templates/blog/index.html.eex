@@ -1,3 +1,9 @@
+<%=
+    link "새 글",
+    to: Routes.blog_path(@conn, :new),
+    class: "font-serif text-lg uppercase hover:underline text-gray-500 hover:text-blue-400"
+%>
+
 <div class="py-4 mb-4">
     <h1 class="text-xl">Lastest Articles</h1>
 </div>
