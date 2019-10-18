@@ -10,3 +10,5 @@
 <div>
 <%= @post.updated_at %>
 </div>
+
+<%= link "<- ", to: Routes.blog_path(@conn, :index) %>
