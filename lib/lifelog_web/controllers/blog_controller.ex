@@ -9,8 +9,9 @@ defmodule LifelogWeb.BlogController do
     render(conn, "index.html", posts: posts)
   end
 
-  def show(conn, _params) do
-    render(conn, "show.html")
+  def show(conn, %{"id" => post_id}) do
+    post = Posts.get(post_id)
+    render(conn, "show.html", post: post)
   end
 
   def new(conn, _params) do
@@ -20,6 +21,7 @@ defmodule LifelogWeb.BlogController do
 
   def create(conn, %{"post" => post_params}) do
     {:ok, post} = Posts.create_post(post_params)
+
     conn
     |> put_flash(:info, "#{post.title} created!")
     |> redirect(to: Routes.blog_path(conn, :index))
@@ -36,5 +38,4 @@ defmodule LifelogWeb.BlogController do
   def destroy(conn, _params) do
     # render(conn, "show.html")
   end
-
 end

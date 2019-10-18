@@ -1,1 +1,12 @@
-Hello World
+<h1><%= @post.title %></h1>
+
+<div>
+<%= @post.body %>
+</div>
+
+<div>
+<%= @post.inserted_at %>
+</div>
+<div>
+<%= @post.updated_at %>
+</div>
