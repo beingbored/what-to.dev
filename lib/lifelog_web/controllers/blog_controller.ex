@@ -24,7 +24,7 @@ defmodule LifelogWeb.BlogController do
 
     conn
     |> put_flash(:info, "#{post.title} created!")
-    |> redirect(to: Routes.blog_path(conn, :index))
+    |> redirect(to: Routes.blog_path(conn, :show, post.id))
   end
 
   def edit(conn, _params) do
