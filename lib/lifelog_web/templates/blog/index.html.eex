@@ -13,7 +13,7 @@
     <div class="p-2 xl:p-0">
         <h1 class="text-3xl font-serif mb-4"><%= post.title %></h1>
         <p class="font-serif text-xl break-normal text-justify mb-4">
-            <%= post.body %>
+            <%= post.excerpt %>
         </p>
         <%=
             link "더보기",
