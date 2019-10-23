@@ -120,8 +120,6 @@ body {
 .markdown h4:hover a.anchor,
 .markdown h5:hover a.anchor,
 .markdown h6:hover a.anchor {
-  background: url("../../images/modules/styleguide/para.png") no-repeat 10px
-    center;
   text-decoration: none;
 }
 .markdown h1 tt,
