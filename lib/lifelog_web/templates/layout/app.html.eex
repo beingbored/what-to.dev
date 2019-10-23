@@ -15,22 +15,7 @@
   <%= render LifelogWeb.SharedView, "sidebar.html", assigns %>
   <main role="main" class="flex-1 w-full h-full overflow-y-auto">
     <div class="container py-10">
-      <!-- Alert Info -->
-      <%= if get_flash(@conn, :info) do %>
-      <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
-        <!-- TODO: Alert Icon -->
-        <p role="alert"><%= get_flash(@conn, :info) %></p>
-      </div>
-      <% end %>
-
-      <!-- Alert Danger -->
-      <%= if get_flash(@conn, :error) do %>
-      <div class="flex items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
-        <!-- TODO: Danger Icon -->
-        <p role="alert"><%= get_flash(@conn, :error) %></p>
-      </div>
-      <% end %>
-
+      <%= render LifelogWeb.SharedView, "alerts.html", assigns %>
       <%= render @view_module, @view_template, assigns %>
     </div>
   </main>
