@@ -19,6 +19,12 @@ defmodule LifelogWeb.Router do
     get "/", PageController, :index
     resources "/blog", BlogController
     get "/design-system", DesignSystemController, :index
+
+    get "/login", SessionController, :index
+    post "/login", SessionController, :new
+
+    get "/signup", UserController, :signup
+    post "/signup", UserController, :create
   end
 
   # Other scopes may use custom stacks.
