@@ -19,7 +19,7 @@ defmodule Lifelog.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Lifelog.Application, [ :timex ]},
+      mod: {Lifelog.Application, [ ]},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -43,8 +43,7 @@ defmodule Lifelog.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:earmark, "~> 1.4.2"},
-      {:timex, "~> 3.5"}
+      {:earmark, "~> 1.4.2"}
     ]
   end
 
