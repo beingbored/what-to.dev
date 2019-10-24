@@ -1,4 +1,5 @@
 defmodule Lifelog.Posts do
+    import Ecto.Query
     @moduledoc """
     The Accounts context.
     """
@@ -22,7 +23,13 @@ defmodule Lifelog.Posts do
     end
 
     def list_posts do
-      Repo.all(Post)
+      query = from(
+        p in Post,
+        select: [:id, :title, :excerpt, :thumbnail],
+        order_by: [desc: p.inserted_at],
+        where: p.published
+      )
+      Repo.all(query)
     end
 
     def create_post(attrs \\ %{}) do
