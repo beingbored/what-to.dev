@@ -15,7 +15,7 @@ defmodule Lifelog.Items.Post do
 
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :body, :excerpt])
+    |> cast(attrs, [:title, :body, :excerpt, :cover, :thumbnail, :published])
     |> validate_required([:title, :body, :excerpt])
   end
 end
