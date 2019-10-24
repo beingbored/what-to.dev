@@ -21,7 +21,7 @@ defmodule LifelogWeb.Router do
     get "/design-system", DesignSystemController, :index
 
     get "/login", SessionController, :index
-    post "/login", SessionController, :new
+    post "/login", SessionController, :create
 
     get "/signup", UserController, :signup
     post "/signup", UserController, :create

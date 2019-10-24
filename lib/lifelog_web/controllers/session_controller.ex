@@ -1,10 +1,14 @@
 defmodule LifelogWeb.SessionController do
     use LifelogWeb, :controller
 
+    alias Lifelog.Accounts
+    alias Lifelog.Items.User
+
     def index(conn, _params) do
-        render(conn, "index.html")
+        changeset = Accounts.change_user(%User{})
+        render(conn, "index.html", changeset: changeset)
     end
 
-    def new(conn, _params) do
+    def create(conn, _params) do
     end
 end
