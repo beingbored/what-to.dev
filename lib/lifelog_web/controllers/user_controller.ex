@@ -10,14 +10,14 @@ defmodule LifelogWeb.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
+
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created!")
         |> redirect(to: Routes.session_path(conn, :index))
-
-      {:error, %Ecto.Changeset{} = cs} ->
-        changeset = Accounts.change_user(%User{})
+        # FIXME: 왜 작동안하는거지
+      {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "signup.html", changeset: changeset)
     end
   end
