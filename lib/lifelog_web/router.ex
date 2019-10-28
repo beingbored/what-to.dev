@@ -7,6 +7,7 @@ defmodule LifelogWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug LifelogWeb.Auth
   end
 
   pipeline :api do
