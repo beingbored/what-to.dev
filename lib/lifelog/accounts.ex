@@ -37,6 +37,12 @@ defmodule Lifelog.Accounts do
     |> Plug.Conn.assign(:current_user, user)
   end
 
+  def logout(conn) do
+    conn
+    |> LifelogWeb.Auth.logout()
+    |> Plug.Conn.assign(:current_user, nil)
+  end
+
   defp check_password(nil, _), do: {:error, "Incorrect username or password"}
 
   defp check_password(user, password) do

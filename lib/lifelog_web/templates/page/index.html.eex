@@ -1,3 +1,10 @@
+
+<%= if @current_user do %>
+    <%= link "로그아웃", to: Routes.session_path(@conn, :delete, @current_user), method: :delete %>
+<% else %>
+    <%= link "회원가입", to: Routes.user_path(@conn, :signup) %> &nbsp;
+    <%= link "로그인", to: Routes.session_path(@conn, :new) %>
+<% end %>
 <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
 <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
 <%= render LifelogWeb.SharedView, "article_item.html", assigns %>

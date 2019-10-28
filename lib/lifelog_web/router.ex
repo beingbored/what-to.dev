@@ -21,9 +21,7 @@ defmodule LifelogWeb.Router do
     resources "/blog", BlogController
     get "/design-system", DesignSystemController, :index
 
-    get "/signin", SessionController, :index
-    post "/signin", SessionController, :create
-
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/signup", UserController, :signup
     post "/signup", UserController, :create
   end
