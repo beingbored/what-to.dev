@@ -20,8 +20,8 @@ defmodule LifelogWeb.Router do
     resources "/blog", BlogController
     get "/design-system", DesignSystemController, :index
 
-    get "/login", SessionController, :index
-    post "/login", SessionController, :create
+    get "/signin", SessionController, :index
+    post "/signin", SessionController, :create
 
     get "/signup", UserController, :signup
     post "/signup", UserController, :create
