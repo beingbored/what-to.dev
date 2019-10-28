@@ -2,7 +2,6 @@ defmodule LifelogWeb.Auth do
     import Plug.Conn
 
     def init(opts) do
-        IO.puts("AUTH")
         opts
     end
 
