@@ -17,7 +17,7 @@ defmodule Lifelog.Accounts do
 
     def create_user(attrs \\ %{}) do
       %User{}
-      |> Post.changeset(attrs)
+      |> User.changeset(attrs)
       |> Repo.insert()
     end
 

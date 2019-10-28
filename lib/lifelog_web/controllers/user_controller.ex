@@ -9,6 +9,9 @@ defmodule LifelogWeb.UserController do
         render(conn, "signup.html", changeset: changeset)
     end
 
-    def create(conn, _params) do
+    def create(conn, %{"user" => user_params}) do
+        IO.inspect(user_params)
+        changeset = Accounts.create_user(%User{})
+        render(conn, "signup.html", changeset: changeset)
     end
 end
