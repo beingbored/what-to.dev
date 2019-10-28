@@ -4,9 +4,7 @@ defmodule Lifelog.Accounts do
   @moduledoc """
   The Accounts context.
   """
-
   alias Lifelog.Repo
-  alias Lifelog.Items.Post
   alias Lifelog.Items.User
 
   def get(id) do
@@ -30,6 +28,13 @@ defmodule Lifelog.Accounts do
     query = Ecto.Query.from(u in User, where: u.email == ^email)
     Repo.one(query)
     |> check_password(password)
+  end
+
+  def login(conn, user) do
+    IO.inspect(user)
+    conn
+    |> LifelogWeb.Auth.login(user)
+    |> Plug.Conn.assign(:current_user, user)
   end
 
   defp check_password(nil, _), do: {:error, "Incorrect username or password"}

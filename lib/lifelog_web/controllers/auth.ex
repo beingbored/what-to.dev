@@ -1,13 +1,20 @@
 defmodule LifelogWeb.Auth do
-    import Plug.Conn
+  import Plug.Conn
 
-    def init(opts) do
-        opts
-    end
+  def init(opts) do
+    opts
+  end
 
-    def call(conn, _ops) do
-        user_id = get_session(conn, :user_id)
-        user = user_id && Lifelog.Accounts.get(user_id)
-        assign(conn, :current_user, user)
-    end
+  def call(conn, _ops) do
+    user_id = get_session(conn, :user_id)
+    user = user_id && Lifelog.Accounts.get(user_id)
+    assign(conn, :current_user, user)
+  end
+
+  def login(conn, user) do
+    conn
+    |> assign(:current_user, user)
+    |> put_session(:user_id, user.id)
+    |> configure_session(renew: true)
+  end
 end
