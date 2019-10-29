@@ -15,8 +15,15 @@ defmodule LifelogWeb.BlogController do
   end
 
   def new(conn, _params) do
-    changeset = Posts.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    if conn.assigns.current_user do
+      changeset = Posts.change_post(%Post{})
+      render(conn, "new.html", changeset: changeset)
+    else
+      conn
+      |> put_flash(:error, "Please Sign In!")
+      |> redirect(to: Routes.session_path(conn, :new))
+      |> halt()
+    end
   end
 
   def create(conn, %{"post" => post_params}) do
@@ -28,7 +35,14 @@ defmodule LifelogWeb.BlogController do
   end
 
   def edit(conn, _params) do
-    render(conn, "edit.html")
+    if conn.assigns.current_user do
+      render(conn, "edit.html")
+    else
+      conn
+      |> put_flash(:error, "Please Sign In!")
+      |> redirect(to: Routes.session_path(conn, :new))
+      |> halt()
+    end
   end
 
   def update(conn, _params) do
