@@ -33,6 +33,7 @@ function debounce(func, wait, immediate) {
 
 
 const updateStatus = debounce((event) => {
+    const status = document.getElementById('blog-form-body-status')
     const sentences = event.target.value
         .split('\n')
         .filter(p => p.trim().length >= 1)
