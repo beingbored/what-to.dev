@@ -45,7 +45,8 @@ defmodule Lifelog.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:earmark, "~> 1.4.2"},
       {:guardian, "~> 1.2"},
-      {:argon2_elixir, "~> 2.0"}
+      {:argon2_elixir, "~> 2.0"},
+      {:phoenix_live_view, "~> 0.3.1"}
     ]
   end
 
