@@ -22,12 +22,14 @@
               <span class="text-black">Blog</span>
           </li>
           <% end %>
-          <li
+          <a href="/bookmarks">
+            <li
             class="cursor-pointer p-6 mb-4 text-xl text-black font-bold bg-white uppercase border-l-8 border-white hover:border-gray-500 hover:bg-gray-100 hover:text-gray-700">
-            <img class="inline-block align-text-bottom"
-              src='<%= Routes.static_path(@conn, "/images/icons/bookmark.svg") %>' alt="Bookmark" />
-            <a href="https://hexdocs.pm/phoenix/overview.html">Bookmark</a>
-          </li>
+              <img class="inline-block align-text-bottom"
+                src='<%= Routes.static_path(@conn, "/images/icons/bookmark.svg") %>' alt="Bookmark" />
+                <span class="text-black">Bookmarks</span>
+            </li>
+          </a>
           <li
             class="cursor-pointer p-6 mb-4 text-xl text-black font-bold bg-white uppercase border-l-8 border-white hover:border-gray-500 hover:bg-gray-100 hover:text-gray-700">
             <img class="inline-block align-text-bottom"

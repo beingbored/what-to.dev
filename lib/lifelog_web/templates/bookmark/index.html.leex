@@ -1,0 +1,21 @@
+<h1>
+    Hello World
+
+</h1>
+
+<div>
+    <form action="#" phx-submit="add">
+        <div>
+            <%= text_input :bookmark, :url, placeholder: "What do you want to get done?" %>
+        </div>
+        <div>
+            <%= text_input :bookmark, :memo, placeholder: "MEMO" %>
+        </div>
+        <%= submit "Add", phx_disable_with: "Adding..." %>
+    </form>
+</div>
+
+
+<%= for bookmark <- @bookmarks do %>
+<div><%= bookmark.url %></div>
+<% end %>

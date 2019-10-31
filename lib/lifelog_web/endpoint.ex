@@ -1,6 +1,8 @@
 defmodule LifelogWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :lifelog
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", LifelogWeb.UserSocket,
     websocket: true,
     longpoll: false

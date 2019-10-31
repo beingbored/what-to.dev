@@ -1,3 +1,6 @@
+/* LiveView */
+@import "../../deps/phoenix_live_view/assets/css/live_view.css";
+
 /* Noto Seri KR */
 @import url("https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");

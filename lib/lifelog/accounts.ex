@@ -1,5 +1,5 @@
 defmodule Lifelog.Accounts do
-  import Ecto.Query
+  import Ecto.Query, warn: false
 
   @moduledoc """
   The Accounts context.

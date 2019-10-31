@@ -5,6 +5,7 @@ defmodule LifelogWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug LifelogWeb.Auth
@@ -24,6 +25,9 @@ defmodule LifelogWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/signup", UserController, :signup
     post "/signup", UserController, :create
+
+    # LiveView
+    live "/bookmarks", BookmarkLive.Index
   end
 
   # Other scopes may use custom stacks.

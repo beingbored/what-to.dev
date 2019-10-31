@@ -15,7 +15,9 @@ config :lifelog, LifelogWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "mr4MLseRVCPRanThYyH1ikkH272S6nYxyK9mKCNl2vg4WMVq0WWghuU/iWpt+E0z",
   render_errors: [view: LifelogWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Lifelog.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Lifelog.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "+sgPm/xGKXc9YsvvaHgu1uezzF/Vp17+0iqcFnn8/0NEvlyLbrOYTX0MDR4FyD+c"]
+
 
 # Configures Elixir's Logger
 config :logger, :console,
