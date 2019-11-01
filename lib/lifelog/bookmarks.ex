@@ -10,6 +10,12 @@ defmodule Lifelog.Bookmarks do
         |> Repo.insert()
     end
 
+    def remove(id) do
+        bookmark = Bookmark
+        |> Repo.get(id)
+        |> Repo.delete()
+    end
+
     def list do
         Bookmark
         |> Repo.all()

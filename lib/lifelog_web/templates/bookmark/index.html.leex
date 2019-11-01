@@ -1,6 +1,5 @@
 <h1>
     Hello World
-
 </h1>
 
 <div>
@@ -15,7 +14,19 @@
     </form>
 </div>
 
+<hr>
 
 <%= for bookmark <- @bookmarks do %>
-<div><%= bookmark.url %></div>
+<div>
+    <div>
+        <%= bookmark.url %>
+    </div>
+    <div>
+        <%= bookmark.memo %>
+    </div>
+    <form action="#" phx-submit="delete">
+        <%= hidden_input :bookmark, :id, value: bookmark.id %>
+        <%= submit "Remove", phx_disable_with: "Remove" %>
+    </form>
+</div>
 <% end %>

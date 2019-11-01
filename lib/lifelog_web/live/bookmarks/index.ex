@@ -17,6 +17,11 @@ defmodule LifelogWeb.BookmarkLive.Index do
     {:noreply, fetch(socket)}
   end
 
+  def handle_event("delete", %{ "bookmark" => %{ "id" => id } }, socket) do
+    {:ok, bookmark} = Bookmarks.remove(id)
+    {:noreply, fetch(socket)}
+  end
+
   defp fetch(socket) do
     assign(socket, bookmarks: Bookmarks.list())
   end
