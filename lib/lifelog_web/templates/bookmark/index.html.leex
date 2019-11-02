@@ -28,11 +28,11 @@
 <%= for bookmark <- @bookmarks do %>
     <div class="border-b border-gray-400 relative mb-6">
         <%= link to: bookmark.url, target: "_blank" do %>
-        <div class="preview mb-4 p-2 flex border border-gray-300">
-            <div class="flex-auto mr-2">
+        <div class="preview mb-4 border border-gray-300 rounded overflow-hidden">
+            <div>
                 <%= img_tag bookmark_image(bookmark) %>
             </div>
-            <div>
+            <div class="p-4">
                 <div>
                     <%= bookmark.title %>
                 </div>
