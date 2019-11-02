@@ -29,7 +29,7 @@ defmodule Lifelog.Posts do
         order_by: [desc: p.inserted_at],
         where: p.published
       )
-      Repo.all(query)
+      |> Repo.all()
     end
 
     def create_post(attrs \\ %{}) do

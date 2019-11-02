@@ -6,12 +6,11 @@
                 url_input :bookmark,
                 :url,
                 placeholder: "URL",
-                class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black",
-                autofocus: true
+                class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black"
             %>
         </div>
         <div class="mb-4">
-            <%= text_input :bookmark,
+            <%= textarea :bookmark,
                 :memo,
                 placeholder: "메모",
                 class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black"
@@ -27,20 +26,32 @@
 <% end %>
 <div class="container mx-auto max-w-xl">
 <%= for bookmark <- @bookmarks do %>
-    <div class="border rounded border-gray-400 p-4 relative mb-4">
-        <div>
-            <%= link bookmark.url, to: bookmark.url, target: "_blank", class: "hover:underline hover:text-blue-400" %>
+    <div class="border-b border-gray-400 relative mb-6">
+        <%= link to: bookmark.url, target: "_blank" do %>
+        <div class="preview mb-4 p-2 flex border border-gray-300">
+            <div class="flex-auto mr-2">
+                <%= img_tag bookmark_image(bookmark) %>
+            </div>
+            <div>
+                <div>
+                    <%= bookmark.title %>
+                </div>
+                <div>
+                    <%= bookmark.description %>
+                </div>
+            </div>
         </div>
+        <% end %>
         <div class="mb-2">
             <%= bookmark.memo %>
         </div>
-        <div class="text-sm text-right">
-            <%= bookmark.inserted_at %>
+        <div class="text-sm mb-4">
+            <%= bookmark.inserted_at %> 추가함
         </div>
         <%= if @current_user do %>
-        <form action="#" phx-submit="delete" class="absolute top-0 right-0 cursor-pointer text-red-900 hover:text-red-700">
+        <form action="#" phx-submit="delete" class="inline-block cursor-pointer text-red-700 hover:text-red-800">
             <%= hidden_input :bookmark, :id, value: bookmark.id %>
-            <%= submit "x", phx_disable_with: "...", class: "p-2" %>
+            <%= submit "지우기", phx_disable_with: "..." %>
         </form>
         <% end %>
     </div>
