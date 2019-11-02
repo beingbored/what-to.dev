@@ -46,7 +46,8 @@ defmodule Lifelog.MixProject do
       {:earmark, "~> 1.4.2"},
       {:guardian, "~> 1.2"},
       {:argon2_elixir, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.3.1"}
+      {:phoenix_live_view, "~> 0.3.1"},
+      {:link_previewer, github: "salamtime2016/link-previewer"}
     ]
   end
 
