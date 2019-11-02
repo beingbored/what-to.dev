@@ -1,6 +1,6 @@
 <%= if @current_user do %>
-<div class="mb-4">
-    <form action="#" phx-submit="add" class="container">
+<div class="mb-4 container mx-auto max-w-xl">
+    <form action="#" phx-submit="add" class="border p-4">
         <div class="mb-4">
             <%=
                 url_input :bookmark,
@@ -19,22 +19,22 @@
         </div>
         <%= submit "추가",
             phx_disable_with: "추가중...",
-            class: "border px-4 py-2 rounded hover:bg-black hover:text-white"
+            class: "border px-4 py-2 rounded hover:bg-black hover:text-white w-full"
         %>
     </form>
 </div>
 
 <% end %>
-<div class="container">
+<div class="container mx-auto max-w-xl">
 <%= for bookmark <- @bookmarks do %>
-    <div class="border rounded p-4 relative mr-4 mb-4 inline-block w-64">
+    <div class="border rounded border-gray-400 p-4 relative mb-4">
         <div>
             <%= link bookmark.url, to: bookmark.url, target: "_blank", class: "hover:underline hover:text-blue-400" %>
         </div>
         <div class="mb-2">
             <%= bookmark.memo %>
         </div>
-        <div class="text-sm">
+        <div class="text-sm text-right">
             <%= bookmark.inserted_at %>
         </div>
         <%= if @current_user do %>
