@@ -1,36 +1,46 @@
 <%= if @current_user do %>
-<div>
-    <form action="#" phx-submit="add">
-        <div>
-            <%= text_input :bookmark, :url, placeholder: "What do you want to get done?" %>
+<div class="mb-4">
+    <form action="#" phx-submit="add" class="container">
+        <div class="mb-4">
+            <%=
+                url_input :bookmark,
+                :url,
+                placeholder: "URL",
+                class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black",
+                autofocus: true
+            %>
         </div>
-        <div>
-            <%= text_input :bookmark, :memo, placeholder: "MEMO" %>
+        <div class="mb-4">
+            <%= text_input :bookmark,
+                :memo,
+                placeholder: "메모",
+                class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black"
+            %>
         </div>
-        <%= submit "Add", phx_disable_with: "Adding..." %>
+        <%= submit "추가",
+            phx_disable_with: "추가중...",
+            class: "border px-4 py-2 rounded hover:bg-black hover:text-white"
+        %>
     </form>
 </div>
 
-<br>
-<hr>
-<br>
 <% end %>
 <div class="container">
 <%= for bookmark <- @bookmarks do %>
-    <div class="border mb-4">
+    <div class="border rounded p-4 relative mr-4 mb-4 inline-block w-64">
         <div>
-            <%= bookmark.url %>
+            <%= link bookmark.url, to: bookmark.url, target: "_blank", class: "hover:underline hover:text-blue-400" %>
         </div>
-        <div>
+        <div class="mb-2">
             <%= bookmark.memo %>
         </div>
-        <div class="mb-4">
+        <div class="text-sm">
             <%= bookmark.inserted_at %>
         </div>
         <%= if @current_user do %>
-        <form action="#" phx-submit="delete">
+        <form action="#" phx-submit="delete" class="absolute top-0 right-0 cursor-pointer text-red-900 hover:text-red-700">
             <%= hidden_input :bookmark, :id, value: bookmark.id %>
-            <%= submit "Remove", phx_disable_with: "Remove" %>
+            <%= submit "x", phx_disable_with: "...", class: "p-2" %>
         </form>
         <% end %>
     </div>
