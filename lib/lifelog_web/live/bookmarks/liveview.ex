@@ -11,8 +11,6 @@ defmodule LifelogWeb.BookmarkLiveView do
   def render(assigns), do: BookmarkView.render("index.html", assigns)
 
   def handle_event("add", %{"bookmark" => bookmark}, socket) do
-    IO.puts("bookmark add")
-    IO.inspect(bookmark)
     {:ok, bookmark} = Bookmarks.add(bookmark)
     {:noreply, fetch(socket)}
   end
