@@ -4,6 +4,7 @@
 /* Noto Seri KR */
 @import url("https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap');
 
 /** assets/css/app.css */
 
@@ -75,6 +76,7 @@ body {
 }
 
 .app-nav-link {
+  font-family: 'Comfortaa', cursive;
   @apply cursor-pointer p-6 mb-4 text-xl text-gray-500 font-bold bg-white uppercase border-l-8 border-white;
 }
 
@@ -188,4 +190,9 @@ body {
 /* Override pygments style background color. */
 .markdown .highlight pre {
   @apply bg-gray-100 !important;
+}
+
+
+.logo {
+ font-family: 'Comfortaa', cursive;
 }
