@@ -49,6 +49,7 @@
             <%= bookmark.inserted_at %> 추가함
         </div>
         <%= if @current_user do %>
+        <%= link "수정 ", to: Routes.bookmark_path(@socket, :edit, bookmark) %>
         <form action="#" phx-submit="delete" class="inline-block cursor-pointer text-red-700 hover:text-red-800">
             <%= hidden_input :bookmark, :id, value: bookmark.id %>
             <%= submit "지우기", phx_disable_with: "..." %>

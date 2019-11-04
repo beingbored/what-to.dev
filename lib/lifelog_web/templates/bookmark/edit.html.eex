@@ -1,0 +1,8 @@
+<h1>Hello WOrld</h1>
+
+<div>
+    <%= @bookmark.id %>
+</div>
+<div>
+    <%= @bookmark.url %>
+</div>
