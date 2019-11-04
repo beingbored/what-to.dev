@@ -27,7 +27,7 @@ defmodule LifelogWeb.Router do
     post "/signup", UserController, :create
 
     # LiveView
-    get "/bookmarks", BookmarkController, :index
+    resources "/bookmarks", BookmarkController, only: [:index, :edit]
   end
 
   # Other scopes may use custom stacks.
