@@ -1,7 +1,2 @@
 <div class="max-w-xl mx-auto">
-    <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
-    <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
-    <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
-    <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
-    <%= render LifelogWeb.SharedView, "article_item.html", assigns %>
 </div>

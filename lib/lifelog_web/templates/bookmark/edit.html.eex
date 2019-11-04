@@ -1,8 +1,21 @@
 <h1>Hello WOrld</h1>
 
-<div>
-    <%= @bookmark.id %>
-</div>
-<div>
-    <%= @bookmark.url %>
-</div>
+<%= @bookmark.id %>
+<%= form_for @changeset, Routes.bookmark_path(@conn, :update, @bookmark.id), fn f -> %>
+    <%=
+        url_input f,
+        :url,
+        class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black",
+        required: true,
+        minlength: 5
+    %>
+    <%=
+        textarea f,
+        :memo,
+        class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black",
+        autocomplete: false
+    %>
+    <%= submit class: "text-xl border border-black px-4 py-2 rounded focus:shadow outline-none" do %>
+        <span>Submit</span>
+    <% end %>
+<% end %>

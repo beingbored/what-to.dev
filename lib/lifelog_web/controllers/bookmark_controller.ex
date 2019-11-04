@@ -4,6 +4,7 @@ defmodule LifelogWeb.BookmarkController do
   alias Lifelog.Bookmarks
   alias Phoenix.LiveView
   alias LifelogWeb.BookmarkLiveView
+  import LinkPreviewer
 
   def index(conn, _params) do
     LiveView.Controller.live_render(
@@ -16,7 +17,8 @@ defmodule LifelogWeb.BookmarkController do
   def edit(conn, %{"id" => id}) do
     if conn.assigns.current_user do
       bookmark = Bookmarks.get(id)
-      render(conn, "edit.html", %{bookmark: bookmark})
+      changeset = Bookmarks.change_bookmark(bookmark)
+      render(conn, "edit.html", %{bookmark: bookmark, changeset: changeset})
     else
       conn
       |> put_flash(:error, "Please Sign In!")
@@ -25,6 +27,24 @@ defmodule LifelogWeb.BookmarkController do
     end
   end
 
-  def update(conn, _params) do
+  def update(conn, %{ "id"=> id, "bookmark" => bookmark }) do
+    {:ok, preview} = LinkPreviewer.preview(bookmark["url"])
+    attrs = merge_preview_with_bookmark(bookmark, preview)
+    bookmark = Bookmarks.update(id, attrs)
+
+    conn
+    |> put_flash(:info, "Updated Succeed!")
+    |> redirect(to: Routes.bookmark_path(conn, :index))
+  end
+
+  defp merge_preview_with_bookmark(bookmark, preview) do
+    %{
+      title: preview.title,
+      icon_link: preview.icon_link,
+      image_link: preview.image_link,
+      description: preview.description,
+      url: preview.link,
+      memo: bookmark["memo"]
+    }
   end
 end
