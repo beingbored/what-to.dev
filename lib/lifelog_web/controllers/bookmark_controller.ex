@@ -37,6 +37,7 @@ defmodule LifelogWeb.BookmarkController do
     |> redirect(to: Routes.bookmark_path(conn, :index))
   end
 
+  # TODO: BookmarkLiveView와 중복임
   defp merge_preview_with_bookmark(bookmark, preview) do
     %{
       title: preview.title,
