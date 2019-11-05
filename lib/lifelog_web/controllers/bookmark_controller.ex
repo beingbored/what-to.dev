@@ -29,7 +29,7 @@ defmodule LifelogWeb.BookmarkController do
 
   def update(conn, %{ "id"=> id, "bookmark" => bookmark }) do
     {:ok, preview} = LinkPreviewer.preview(bookmark["url"])
-    attrs = merge_preview_with_bookmark(bookmark, preview)
+    attrs = Bookmarks.merge_preview_with_bookmark(bookmark, preview)
     bookmark = Bookmarks.update(id, attrs)
 
     conn
@@ -38,14 +38,4 @@ defmodule LifelogWeb.BookmarkController do
   end
 
   # TODO: BookmarkLiveView와 중복임
-  defp merge_preview_with_bookmark(bookmark, preview) do
-    %{
-      title: preview.title,
-      icon_link: preview.icon_link,
-      image_link: preview.image_link,
-      description: preview.description,
-      url: preview.link,
-      memo: bookmark["memo"]
-    }
-  end
 end

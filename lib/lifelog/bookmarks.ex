@@ -35,4 +35,16 @@ defmodule Lifelog.Bookmarks do
   def change_bookmark(%Bookmark{} = bookmark) do
     Bookmark.changeset(bookmark, %{})
   end
+
+  def merge_preview_with_bookmark(bookmark, preview) do
+    %{
+      title: preview.title,
+      icon_link: preview.icon_link,
+      image_link: preview.image_link,
+      description: preview.description,
+      url: preview.link,
+      memo: bookmark["memo"]
+    }
+  end
+
 end

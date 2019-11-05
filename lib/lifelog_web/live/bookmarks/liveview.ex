@@ -14,7 +14,7 @@ defmodule LifelogWeb.BookmarkLiveView do
 
   def handle_event("add", %{"bookmark" => bookmark}, socket) do
     {:ok, preview} = LinkPreviewer.preview(bookmark["url"])
-    attrs = merge_preview_with_bookmark(bookmark, preview)
+    attrs = Bookmarks.merge_preview_with_bookmark(bookmark, preview)
     {:ok, bookmark} = Bookmarks.add(attrs)
     {:noreply, fetch(socket)}
   end
@@ -28,14 +28,4 @@ defmodule LifelogWeb.BookmarkLiveView do
     assign(socket, bookmarks: Bookmarks.list())
   end
 
-  defp merge_preview_with_bookmark(bookmark, preview) do
-    %{
-      title: preview.title,
-      icon_link: preview.icon_link,
-      image_link: preview.image_link,
-      description: preview.description,
-      url: preview.link,
-      memo: bookmark["memo"]
-    }
-  end
 end
