@@ -25,6 +25,7 @@ defmodule LifelogWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/signup", UserController, :signup
     post "/signup", UserController, :create
+    resources "/photo", PhotoController, only: [:index, :create, :delete]
 
     # LiveView
     resources "/bookmarks", BookmarkController, only: [:index, :edit, :update]

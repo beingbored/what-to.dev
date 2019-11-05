@@ -10,6 +10,10 @@ use Mix.Config
 config :lifelog,
   ecto_repos: [Lifelog.Repo]
 
+config :arc,
+  storage: Arc.Storage.Local, # or Arc.Storage.S3
+  bucket: {:system, "AWS_S3_BUCKET"} # if using Amazon S3
+
 # Configures the endpoint
 config :lifelog, LifelogWeb.Endpoint,
   url: [host: "localhost"],
