@@ -1,5 +1,6 @@
-<div>
+<div class="container max-w-sm mb-8">
     <%= form_for @changeset, Routes.photo_path(@conn, :create), [multipart: true], fn f -> %>
+        <div class="text-lg">이미지 업로드</div>
         <div class="mb-4">
             <%=
                 file_input f,
@@ -19,20 +20,23 @@
             <% end %>
         </div>
     <% end %>
+</div>
+<div>
     <div class="grid max-w-4xl mx-auto p-8">
     <%= for photo <- @photos do %>
-        <div class="w-full block rounded-b">
+        <div class="w-full block rounded-b relative">
             <div>
                 <%= img_tag photo.image.thumb %>
             </div>
-            <div>
-                <% "#{LifelogWeb.Router.Helpers.page_url(LifelogWeb.Endpoint, :index)}#{photo.image.original}" %>
-                <a href="#">URL 복사</a>
-                &nbsp;
-                <%= link "삭제", to: Routes.photo_path(@conn, :delete, photo.id), method: :delete %>
+            <div class="absolute top-0 flex flex-col justify-between content-between w-full h-full text-center bg-transparent">
+                <div class="inline bg-transparent">
+                    <%= link "삭제", to: Routes.photo_path(@conn, :delete, photo.id), method: :delete %>
+                </div>
+                <div>
+                    <% "#{LifelogWeb.Router.Helpers.page_url(LifelogWeb.Endpoint, :index)}#{photo.image.original}" %>
+                    <a href="#">URL 복사</a>
+                </div>
             </div>
-
         </div>
     <% end %>
-</div>
 </div>
