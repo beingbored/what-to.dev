@@ -196,3 +196,30 @@ body {
 .logo {
  font-family: 'Comfortaa', cursive;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.5rem;
+}
+
+.grid a img {
+  transition: all .2s ease-in;
+  filter: grayscale(100%);
+}
+
+.grid a:hover img {
+  filter: grayscale(0);
+}
+
+@media screen and (min-width: 768px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
