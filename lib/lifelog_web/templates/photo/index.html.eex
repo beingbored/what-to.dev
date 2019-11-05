@@ -1,0 +1,30 @@
+<div>
+    <h1>Hello World</h1>
+    <%= form_for @changeset, Routes.photo_path(@conn, :create), [multipart: true], fn f -> %>
+        <div class="mb-4">
+            <%=
+                file_input f,
+                :image,
+                class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black",
+                required: true
+            %>
+        </div>
+        <div>
+            <%= submit class: "text-xl border border-black px-4 py-2 rounded focus:shadow outline-none" do %>
+                <img
+                    class="inline-block align-text-bottom"
+                    src='<%= Routes.static_path(@conn, "/images/icons/save.svg") %>'
+                    alt="Submit"
+                />&nbsp;
+                <span>Submit</span>
+            <% end %>
+        </div>
+    <% end %>
+
+    <%= for photo <- @thumbnails do %>
+    <div>
+        <%= img_tag photo %>
+    </div>
+
+    <% end %>
+</div>
