@@ -1,5 +1,4 @@
 <div>
-    <h1>Hello World</h1>
     <%= form_for @changeset, Routes.photo_path(@conn, :create), [multipart: true], fn f -> %>
         <div class="mb-4">
             <%=
@@ -20,12 +19,20 @@
             <% end %>
         </div>
     <% end %>
-
+    <div class="grid max-w-4xl mx-auto p-8">
     <%= for photo <- @photos do %>
-    <div>
-        <%= img_tag photo.thumbnail %>
-        <%= link "삭제", to: Routes.photo_path(@conn, :delete, photo.id), method: :delete %>
-    </div>
+        <div class="w-full block rounded-b">
+            <div>
+                <%= img_tag photo.image.thumb %>
+            </div>
+            <div>
+                <% "#{LifelogWeb.Router.Helpers.page_url(LifelogWeb.Endpoint, :index)}#{photo.image.original}" %>
+                <a href="#">URL 복사</a>
+                &nbsp;
+                <%= link "삭제", to: Routes.photo_path(@conn, :delete, photo.id), method: :delete %>
+            </div>
 
+        </div>
     <% end %>
+</div>
 </div>

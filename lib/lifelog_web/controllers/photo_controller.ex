@@ -5,12 +5,19 @@ defmodule LifelogWeb.PhotoController do
     alias Lifelog.Items.Photo
 
     def index(conn, _params) do
-      changeset = Photo.changeset(%Photo{})
-      query = from(p in Photo, order_by: [desc: p.inserted_at])
-      photos = Enum.map(Repo.all(query), fn photo -> map_images(photo) end)
+      if conn.assigns.current_user do
+        changeset = Photo.changeset(%Photo{})
+        query = from(p in Photo, order_by: [desc: p.inserted_at])
+        photos = Enum.map(Repo.all(query), fn photo -> map_images(photo) end)
+        conn
+        |> render("index.html", %{changeset: changeset, photos: photos})
+      else
+        conn
+        |> put_flash(:error, "Please Sign In!")
+        |> redirect(to: Routes.session_path(conn, :new))
+        |> halt()
+      end
 
-      conn
-      |> render("index.html", %{changeset: changeset, photos: photos})
     end
 
     def create(conn, %{ "photo" => photo }) do
@@ -35,6 +42,6 @@ defmodule LifelogWeb.PhotoController do
 
     defp map_images(photo) do
       photo
-      |>  Map.put(:thumbnail, Lifelog.Photo.url({photo.image, photo}, :thumb))
+      |>  Map.put(:image, Lifelog.Photo.urls({photo.image, photo}))
     end
 end

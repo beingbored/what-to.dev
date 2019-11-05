@@ -30,12 +30,14 @@
                 <span class="text-black">Bookmarks</span>
             </li>
           </a>
+          <%= if @current_user != nil do %>
           <%= link to: Routes.photo_path(@conn, :index), class: "text-black" do %>
           <li class="app-nav-link hover:border-gray-500 text-black hover:bg-gray-100 hover:text-gray-700">
             <img class="inline-block align-text-bottom"
               src='<%= Routes.static_path(@conn, "/images/icons/image.svg") %>' alt="Photos" />
               <span class="text-black">Photos</span>
           </li>
+          <% end %>
           <% end %>
         </ul>
       </nav>
