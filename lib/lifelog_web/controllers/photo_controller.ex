@@ -7,19 +7,15 @@ defmodule LifelogWeb.PhotoController do
     def index(conn, _params) do
       changeset = Photo.changeset(%Photo{})
       query = from(p in Photo, order_by: [desc: p.inserted_at])
-      list = Repo.all(query)
-      thumbnails = Enum.map(list, fn x -> Lifelog.Photo.url({x.image, x}, :thumb) end)
-
-      IO.inspect(thumbnails)
+      photos = Enum.map(Repo.all(query), fn photo -> map_images(photo) end)
 
       conn
-      |> render("index.html", %{changeset: changeset, thumbnails: thumbnails})
+      |> render("index.html", %{changeset: changeset, photos: photos})
     end
 
     def create(conn, %{ "photo" => photo }) do
       changeset = %Photo{} |> Photo.changeset(photo)
 
-      IO.inspect(changeset)
       if changeset.valid? do
         Repo.insert(changeset)
       end
@@ -27,4 +23,18 @@ defmodule LifelogWeb.PhotoController do
       conn
       |> redirect(to: Routes.photo_path(conn, :index))
     end
-  end
+
+
+    def delete(conn, %{ "id" => id }) do
+      Photo
+      |> Repo.get(id)
+      |> Repo.delete()
+      conn
+      |> redirect(to: Routes.photo_path(conn, :index))
+    end
+
+    defp map_images(photo) do
+      photo
+      |>  Map.put(:thumbnail, Lifelog.Photo.url({photo.image, photo}, :thumb))
+    end
+end

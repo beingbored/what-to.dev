@@ -28,7 +28,7 @@ defmodule LifelogWeb.Router do
     resources "/photo", PhotoController, only: [:index, :create, :delete]
 
     # LiveView
-    resources "/bookmarks", BookmarkController, only: [:index, :edit, :update]
+    resources "/bookmarks", BookmarkController, only: [:index, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.
@@ -36,3 +36,6 @@ defmodule LifelogWeb.Router do
   #   pipe_through :api
   # end
 end
+
+
+# <%= link "삭제", to: Routes.photo_path(@conn, :delete, photo.id), method: :delete %>

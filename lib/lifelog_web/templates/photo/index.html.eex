@@ -21,9 +21,10 @@
         </div>
     <% end %>
 
-    <%= for photo <- @thumbnails do %>
+    <%= for photo <- @photos do %>
     <div>
-        <%= img_tag photo %>
+        <%= img_tag photo.thumbnail %>
+        <%= link "삭제", to: Routes.photo_path(@conn, :delete, photo.id), method: :delete %>
     </div>
 
     <% end %>
