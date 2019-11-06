@@ -48,10 +48,10 @@
         <div class="mb-2">
             <%= bookmark.memo %>
         </div>
-        <div class="text-sm mb-4">
+        <div class="text-sm text-right mb-4">
             <%= bookmark.user.username %> | <%= bookmark.inserted_at %> 추가함
         </div>
-        <%= if @current_user do %>
+        <%= if @current_user == bookmark.user do %>
         <%= link "수정 ", to: Routes.bookmark_path(@socket, :edit, bookmark) %>
         <form action="#" phx-submit="delete" class="inline-block cursor-pointer text-red-700 hover:text-red-800">
             <%= hidden_input :bookmark, :id, value: bookmark.id %>
