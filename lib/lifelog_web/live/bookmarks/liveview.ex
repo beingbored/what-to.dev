@@ -7,6 +7,9 @@ defmodule LifelogWeb.BookmarkLiveView do
 
 
   def mount(%{ "current_user": current_user }, socket) do
+    IO.puts("HELLO WORLD")
+    IO.inspect(Bookmarks.list())
+
     {:ok, assign(socket, bookmarks: Bookmarks.list(), current_user: current_user)}
   end
 
@@ -27,7 +30,8 @@ defmodule LifelogWeb.BookmarkLiveView do
   end
 
   defp fetch(socket) do
-    assign(socket, bookmarks: Bookmarks.list())
+    socket
+    |>  assign(bookmarks: Bookmarks.list())
   end
 
 end

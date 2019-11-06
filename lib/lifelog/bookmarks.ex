@@ -31,6 +31,7 @@ defmodule Lifelog.Bookmarks do
   def list do
     query = from(b in Bookmark, order_by: [desc: b.inserted_at])
     |> Repo.all()
+    |> Repo.preload([:user])
   end
 
   def change_bookmark(%Bookmark{} = bookmark) do

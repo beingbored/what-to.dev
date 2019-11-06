@@ -48,11 +48,8 @@
         <div class="mb-2">
             <%= bookmark.memo %>
         </div>
-        <div class="mb-2">
-            user id : <%= bookmark.user_id %>
-        </div>
         <div class="text-sm mb-4">
-            <%= bookmark.inserted_at %> 추가함
+            <%= bookmark.user.username %> | <%= bookmark.inserted_at %> 추가함
         </div>
         <%= if @current_user do %>
         <%= link "수정 ", to: Routes.bookmark_path(@socket, :edit, bookmark) %>
