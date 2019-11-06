@@ -7,6 +7,7 @@ defmodule Lifelog.Items.User do
     field :username, :string
     field :email, :string
     field :password, :string
+    has_many :bookmarks, Lifelog.Items.Bookmark
 
     timestamps()
   end

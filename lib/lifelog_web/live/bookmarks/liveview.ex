@@ -13,6 +13,8 @@ defmodule LifelogWeb.BookmarkLiveView do
   def render(assigns), do: BookmarkView.render("index.html", assigns)
 
   def handle_event("add", %{"bookmark" => bookmark}, socket) do
+    bookmark = Map.put(bookmark, "user_id", socket.assigns.current_user.id)
+    IO.inspect(bookmark)
     {:ok, preview} = LinkPreviewer.preview(bookmark["url"])
     attrs = Bookmarks.merge_preview_with_bookmark(bookmark, preview)
     {:ok, bookmark} = Bookmarks.add(attrs)

@@ -9,13 +9,14 @@ defmodule Lifelog.Items.Bookmark do
       field :icon_link, :string
       field :image_link, :string
       field :description, :string
+      belongs_to :user, Lifelog.Items.User
 
       timestamps()
     end
 
     def changeset(bookmark, attrs) do
       bookmark
-      |> cast(attrs, [:url, :memo, :title, :icon_link, :image_link, :description])
+      |> cast(attrs, [:url, :memo, :title, :icon_link, :image_link, :description, :user_id])
       |> validate_required([:url])
     end
   end

@@ -16,6 +16,9 @@
                 class: "font-mono text-xl border-b border-black outline-none w-full py-2 px-2 border-blue-500 focus:border-black"
             %>
         </div>
+
+        <%= hidden_input :bookmark, :user_id, value: @current_user.id %>
+
         <%= submit "추가",
             phx_disable_with: "추가중...",
             class: "border px-4 py-2 rounded hover:bg-black hover:text-white w-full"
@@ -44,6 +47,9 @@
         <% end %>
         <div class="mb-2">
             <%= bookmark.memo %>
+        </div>
+        <div class="mb-2">
+            user id : <%= bookmark.user_id %>
         </div>
         <div class="text-sm mb-4">
             <%= bookmark.inserted_at %> 추가함

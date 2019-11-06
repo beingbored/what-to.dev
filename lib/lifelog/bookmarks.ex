@@ -5,6 +5,7 @@ defmodule Lifelog.Bookmarks do
   alias Lifelog.Items.Bookmark
 
   def add(attrs \\ %{}) do
+    IO.inspect(attrs)
     %Bookmark{}
     |> Bookmark.changeset(attrs)
     |> Repo.insert()
@@ -28,7 +29,7 @@ defmodule Lifelog.Bookmarks do
   end
 
   def list do
-    query = from( b in Bookmark, order_by: [desc: b.inserted_at])
+    query = from(b in Bookmark, order_by: [desc: b.inserted_at])
     |> Repo.all()
   end
 
@@ -43,7 +44,8 @@ defmodule Lifelog.Bookmarks do
       image_link: preview.image_link,
       description: preview.description,
       url: preview.link,
-      memo: bookmark["memo"]
+      memo: bookmark["memo"],
+      user_id: bookmark["user_id"]
     }
   end
 
